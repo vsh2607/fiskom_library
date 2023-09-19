@@ -1,5 +1,5 @@
 <div class="text-center mt-5">
-    <p style="font-size:45px; font-weight:bold">Daftar Anggota</p>
+    <p style="font-size:45px; font-weight:bold">Data Anggota</p>
 </div>
 
 
@@ -26,10 +26,11 @@
                 <tr>
                     <td>{{ ++$key }}</td>
                     <td>{{ $anggota->name }}</td>
-                    <td><button class="btn btn-primary">Edit</button>
+                    <td>
+                        <a href="/edit-anggota/{{ $anggota->id }}" class="btn btn-primary">Edit</a>
                         <button class="btn btn-danger" data-toggle="modal" data-target="#confirmDelete"
                             id="delete_anggota" onclick="getDeletedId({{ $anggota->id }})">Hapus</button>
-                        <button class="btn btn-success">Detail</button>
+                        <a class="btn btn-success" href="/detail-anggota/{{ $anggota->id }}">Detail</a>
                     </td>
                 </tr>
             @endforeach

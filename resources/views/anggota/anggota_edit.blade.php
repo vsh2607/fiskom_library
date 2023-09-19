@@ -1,5 +1,5 @@
 <div class="text-center mt-5">
-    <p style="font-weight: bold; font-size: 40px">Tambah Anggota</p>
+    <p style="font-weight: bold; font-size: 40px">Ubah Data Anggota</p>
 </div>
 <div class="container mt-5">
 
@@ -29,41 +29,40 @@
         <div class="col-6">
 
 
-            <form action="/tambah-anggota" method="POST" enctype="multipart/form-data">
+            <form action="/edit-anggota/{{ $anggota->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <label for="nim">Nomor Induk Mahasiswa <sup class="text-danger">*</sup></label>
-                <input type="text" class="form-control" name="nim" id="nim" required
-                    value="{{ old('nim') }}">
+                <input type="text" class="form-control" name="nim" id="nim" required value="{{ $anggota->nim }}" readonly>
                 <br>
                 <label for="name">Nama <sup class="text-danger">*</sup></label>
                 <input type="text" class="form-control" name="name" id="name" required
-                    value="{{ old('name') }}">
+                    value="{{ $anggota->name }}">
                 <br>
                 <label for="dob">Tanggal Lahir <sup class="text-danger">*</sup></label>
                 <input type="date" class="form-control" name="dob" id="dob" required
-                    value="{{ old('dob') }}">
+                    value="{{ $anggota->dob}}">
                 <br>
                 <label for="prodi">Program Studi <sup class="text-danger">*</sup></label>
                 <select name="prodi" id="prodi" class="form-control">
                     <option value="" disabled selected>Pilih Program Studi</option>
-                    <option value="fisika">Fisika</option>
-                    <option value="informatika">Informatika</option>
+                    <option value="fisika" {{ $anggota->prodi == "fisika" ? 'selected' : '' }}>Fisika</option>
+                    <option value="informatika" {{ $anggota->prodi == "informatika" ? 'selected' : '' }}>Informatika</option>
                 </select>
         </div>
 
         <div class="col-6">
             <label for="no_wa">Nomor WhatsApp <sup class="text-danger">*</sup></label>
             <input type="text" class="form-control" name="no_wa" id="no_wa" required
-                value="{{ old('no_wa') }}">
+                value="{{ $anggota->no_wa }}">
             <br>
 
             <label for="email">Email <sup class="text-danger">*</sup></label>
             <input type="text" class="form-control" name="email" id="email" required
-                value="{{ old('email') }}">
+                value="{{ $anggota->email }}">
             <br>
             <label for="alamat">Alamat <sup class="text-danger">*</sup></label>
             <input type="text" class="form-control" name="alamat" id="alamat" required
-                value="{{ old('alamat') }}">
+                value="{{ $anggota->alamat }}">
             <br>
             <label for="photo_path">Upload Foto</label>
             <input type="file" value="" class="form-control" name="photo_path" id="photo_path">
@@ -71,6 +70,6 @@
         </div>
 
     </div>
-    <button type="submit" class="btn btn-danger mt-5 btn-xl float-right">Tambah Anggota</button>
+    <button type="submit" class="btn btn-danger mt-5 btn-xl float-right">Simpan</button>
     </form>
 </div>

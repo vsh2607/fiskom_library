@@ -30,4 +30,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/tambah-anggota', [AnggotaController::class, 'index'])->name('tambah-anggota')->middleware('auth');
 Route::post('/tambah-anggota', [AnggotaController::class, 'store'])->middleware('auth');
 Route::get('/list-anggota', [AnggotaController::class, 'showListAnggota'])->name('list-anggota')->middleware('auth');
-Route::delete('/hapus-anggota/{id}', [AnggotaController::class, 'destroy'])->name('hapus-anggota')->middleware('auth');
+Route::delete('/hapus-anggota/{id}', [AnggotaController::class, 'destroy'])->middleware('auth');
+Route::get('/detail-anggota/{id}', [AnggotaController::class, 'show'])->middleware('auth');
+Route::post('/edit-anggota/{id}', [AnggotaController::class, 'update'])->middleware('auth');
+Route::get('/edit-anggota/{id}', [AnggotaController::class, 'edit'])->middleware('auth');
