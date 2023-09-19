@@ -146,7 +146,7 @@ class AnggotaController extends Controller
             'no_wa' => $request->no_wa,
             'email' => $request->email,
             'alamat' => $request->alamat,
-            'photo_path' => $path == null ? $request->photo_path : $path
+            'photo_path' => $path == null ? $anggota->photo_path : $path
 
         ];
         $anggota = Anggota::find($id);
