@@ -18,7 +18,7 @@
                             <a class="btn btn-danger btn-block mt-3" style="padding: 20px" href="{{ route('dashboard') }}">DASHBOARD</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-danger btn-block mt-3" style="padding: 20px" href="#">PENDAFTARAN ANGGOTA</a>
+                            <a class="btn btn-danger btn-block mt-3" style="padding: 20px" href="{{route('tambah-anggota')}}">PENDAFTARAN ANGGOTA</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-danger mt-3 btn-block" style="padding: 20px" href="#">PEMINJAMAN BUKU</a>
@@ -30,7 +30,7 @@
                             <a class="btn btn-danger mt-3 btn-block" style="padding: 20px" href="#">DATA BUKU</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-danger mt-3 btn-block" style="padding: 20px" href="#">DATA ANGGOTA</a>
+                            <a class="btn btn-danger mt-3 btn-block" style="padding: 20px" href="{{ route('list-anggota') }}">DATA ANGGOTA</a>
                         </li>
                         <li class="nav-item">
                             <form action="/logout" method="POST">

@@ -10,9 +10,8 @@ class AuthContoller extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $pageName = "FISKOM Library System Login";
+    public function index(){
+        $pageName = "FISKOM Library System - Login";
         $navbarType = "navbar_empty";
         return view('auth.login', ['pageName' => $pageName, 'navbarType' => $navbarType]);
     }
