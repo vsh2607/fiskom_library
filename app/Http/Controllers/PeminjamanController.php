@@ -35,8 +35,8 @@ class PeminjamanController extends Controller
     {
         $request->validate([
             'id_anggota' => 'required',
-            'tgl_peminjaman' => 'date|required',
-            'tgl_kembali' => 'date|required'
+            'tgl_peminjaman' => 'date|required|after_or_equal:today',
+            'tgl_kembali' => 'date|required|after_or_equal:today'
         ]);
 
         if($request->id_buku == null){
