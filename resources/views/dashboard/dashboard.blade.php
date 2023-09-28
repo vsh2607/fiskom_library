@@ -27,7 +27,7 @@
                             <a class="btn btn-danger mt-3 btn-block" style="padding: 20px" href="#">PENGEMBALIAN BUKU</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-danger mt-3 btn-block" style="padding: 20px" href="#">DATA BUKU</a>
+                            <a class="btn btn-danger mt-3 btn-block" style="padding: 20px" href="{{ route('list-buku') }}">DATA BUKU</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-danger mt-3 btn-block" style="padding: 20px" href="{{ route('list-anggota') }}">DATA ANGGOTA</a>

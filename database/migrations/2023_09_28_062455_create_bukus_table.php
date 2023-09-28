@@ -11,9 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('buku', function (Blueprint $table) {
+        Schema::create('bukus', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('judul_buku')->nullable();
+            $table->string('penyusun_buku')->nullable();
+            $table->string('penerbit')->nullable();
+            $table->string('kode_buku')->nullable();
+            $table->string('tahun_terbit')->nullable();
+            $table->integer('jumlah')->nullable();
+
         });
     }
 
@@ -22,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('buku');
+        Schema::dropIfExists('bukus');
     }
 };

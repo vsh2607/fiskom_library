@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <table class="table">
+    <table id="anggota_data" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <th>No</th>
             <th>Nama</th>

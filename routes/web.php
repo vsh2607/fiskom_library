@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\AuthContoller;
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\DashboardController;
 use App\Models\Anggota;
 use Illuminate\Support\Facades\Route;
@@ -34,3 +35,7 @@ Route::delete('/hapus-anggota/{id}', [AnggotaController::class, 'destroy'])->mid
 Route::get('/detail-anggota/{id}', [AnggotaController::class, 'show'])->middleware('auth');
 Route::post('/edit-anggota/{id}', [AnggotaController::class, 'update'])->middleware('auth');
 Route::get('/edit-anggota/{id}', [AnggotaController::class, 'edit'])->middleware('auth');
+
+//Buku
+Route::get('/list-buku',[BukuController::class, 'index'])->name('list-buku')->middleware('auth');
+Route::post('/upload-file', [BukuController::class, 'store'])->middleware('auth');
