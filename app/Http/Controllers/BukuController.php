@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Imports\BukusImport;
 use App\Models\Buku;
+use Exception;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -32,8 +33,27 @@ class BukuController extends Controller
         ]);
 
         $file = $request->file('file_upload');
-        Buku::truncate();
-        Excel::import(new BukusImport, $file);
+        $buku = Buku::all();
+        try{
+            Buku::truncate();
+            Excel::import(new BukusImport, $file);
+        }catch(Exception $e){
+            foreach($buku as $item){
+                $otherBuku = new Buku();
+
+                $otherBuku->id = $item->id;
+                $otherBuku->created_at = $item->created_at;
+                $otherBuku->updated_at = $item->updated_at;
+                $otherBuku->judul_buku = $item->judul_buku;
+                $otherBuku->penyusun_buku = $item->penyusun_buku;
+                $otherBuku->penerbit = $item->penerbit;
+                $otherBuku->kode_buku = $item->kode_buku;
+                $otherBuku->tahun_terbit = $item->tahun_terbit;
+                $otherBuku->jumlah = $item->jumlah;
+                $otherBuku->save();
+            }
+            return redirect('/list-buku')->with('errorBuku', "Pastikan Data Buku Yang Dimasukkan Sudah Benar!");
+        }
         return redirect('/list-buku')->with('success', 'Data Buku Berhasil Ditambahkan');
     }
 
