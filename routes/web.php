@@ -4,6 +4,7 @@ use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\AuthContoller;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PeminjamanController;
 use App\Models\Anggota;
 use Illuminate\Support\Facades\Route;
 
@@ -39,3 +40,8 @@ Route::get('/edit-anggota/{id}', [AnggotaController::class, 'edit'])->middleware
 //Buku
 Route::get('/list-buku',[BukuController::class, 'index'])->name('list-buku')->middleware('auth');
 Route::post('/upload-file', [BukuController::class, 'store'])->middleware('auth');
+
+
+//Proses Pinjam - Kembali
+Route::get('/pinjam', [PeminjamanController::class, 'index'])->name('pinjam')->middleware('auth');
+Route::post('/pinjam', [PeminjamanController::class, 'store'])->middleware('auth');

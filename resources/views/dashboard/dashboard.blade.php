@@ -1,5 +1,4 @@
 @extends('base')
-
 @section('content')
 
 <style>
@@ -21,7 +20,7 @@
                             <a class="btn btn-danger btn-block mt-3" style="padding: 20px" href="{{route('tambah-anggota')}}">PENDAFTARAN ANGGOTA</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-danger mt-3 btn-block" style="padding: 20px" href="#">PEMINJAMAN BUKU</a>
+                            <a class="btn btn-danger mt-3 btn-block" style="padding: 20px" href="{{ route('pinjam') }}">PEMINJAMAN BUKU</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-danger mt-3 btn-block" style="padding: 20px" href="#">PENGEMBALIAN BUKU</a>
