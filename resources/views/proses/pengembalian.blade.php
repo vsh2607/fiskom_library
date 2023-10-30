@@ -34,7 +34,7 @@
                     <td>{{ count($pinjaman->detailPeminjamans) . ' ' }} Buku</td>
                     <td>{{ strftime('%e %B %Y', strtotime($pinjaman->peminjaman_tgl_pengembalian)) }}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm" id="btn_detail_peminjaman" data-toggle = "modal" data-target="#detail-pinjam-modal">Detail Pinjaman</button>
+                        <button class="btn btn-primary btn-sm" id="btn_detail_peminjaman" data-toggle = "modal" data-target="#detail-pinjam-modal" onclick="getReturnedDetail({{ $pinjaman->id }})">Detail Pinjaman</button>
                         <button class="btn btn-warning btn-sm" id="btn_return_peminjaman" data-toggle = "modal" data-target="#return-buku-modal" onclick="getReturnedId({{ $pinjaman->id }})">Kembalikan Buku</button>
                     </td>
                 </tr>
@@ -65,6 +65,36 @@
                     <input type="hidden" id="returnBookId" name="returnBookId" value="">
                     <button type="submit" class="btn btn-warning">Sudah</button>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="detail-pinjam-modal" tabindex="-1" role="dialog"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteLabel">Detail Buku Pinjaman</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered" id="return-buku-detail-table">
+                    <thead>
+                        <th>No</th>
+                        <th>Judul Buku</th>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
             </div>
         </div>
     </div>

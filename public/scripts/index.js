@@ -14,13 +14,13 @@ function addBukuPinjaman() {
     var judul_buku = selectedOption.text;
     var kode_buku = selectedOption.getAttribute('kode_buku');
 
-    if(value != ""){
+    if (value != "") {
         var rows = "";
         rows +=
             "<tr>" +
-            "<td>" + "<input name='id_buku[]' type='hidden' value="+value+">" +value + "</td>" +
-            "<td>" + "<input name='kode_buku[]' type='hidden' value="+kode_buku+">"+ kode_buku + "</td>" +
-            "<td>"+ "<input name='judul_buku[]' type='hidden' value="+judul_buku+">"+ judul_buku + "</td>" +
+            "<td>" + "<input name='id_buku[]' type='hidden' value=" + value + ">" + value + "</td>" +
+            "<td>" + "<input name='kode_buku[]' type='hidden' value=" + kode_buku + ">" + kode_buku + "</td>" +
+            "<td>" + "<input name='judul_buku[]' type='hidden' value=" + judul_buku + ">" + judul_buku + "</td>" +
             "<td>" +
             "<button class='btn btn-sm btn-danger' onclick = deleteRow(this)>Hapus</button>"
         "</td>" +
@@ -32,7 +32,7 @@ function addBukuPinjaman() {
 
 }
 
-function deleteRow(el){
+function deleteRow(el) {
     $(el).closest('tr').remove();
 }
 
@@ -42,9 +42,28 @@ function getDeletedId(anggotaId) {
     myForm.action = "/hapus-anggota/" + anggotaId;
 }
 
-function getReturnedId(peminjamanId){
+function getReturnedId(peminjamanId) {
     myForm = document.getElementById('book-form-return');
     myForm.action = "/kembali/" + peminjamanId;
 }
 
-
+function getReturnedDetail(peminjamanId) {
+    $.ajax({
+        url: `/fetchDetail/${peminjamanId}`,
+        method: `GET`,
+        success: function (data) {
+            var modalTableBody = $('#return-buku-detail-table tbody');
+            modalTableBody.empty();
+            data.forEach(function (book, index) {
+                var row = '<tr>' +
+                    '<td>' + (index + 1) + '</td>' +
+                    '<td>' + book.book_name + '</td>' +
+                    '</tr>';
+                modalTableBody.append(row);
+            });
+        },
+        error: function (xhr, status, error) {
+            console.log(error);
+        }
+    });
+}

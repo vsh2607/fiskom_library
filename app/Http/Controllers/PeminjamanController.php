@@ -43,8 +43,19 @@ class PeminjamanController extends Controller
         return redirect('/kembali');
     }
 
-    public function create()
-    {
+    public function fetchBookReturnData(String $id){
+        $peminjaman = Peminjaman::with(['detailPeminjamans'])->where('id', $id)->first();
+        $detailPeminjaman = $peminjaman->detailPeminjamans;
+        $bookData =  [];
+        foreach($detailPeminjaman as $detail){
+            $book = Buku::where('id', $detail->id_buku)->first();
+            $bookData[] = [
+                'book_name' => $book->judul_buku
+            ];
+        }
+
+        return response()->json($bookData);
+        
     }
 
   
@@ -85,35 +96,5 @@ class PeminjamanController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Peminjaman $peminjaman)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Peminjaman $peminjaman)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Peminjaman $peminjaman)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Peminjaman $peminjaman)
-    {
-        //
-    }
 }

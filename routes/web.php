@@ -47,3 +47,4 @@ Route::get('/pinjam', [PeminjamanController::class, 'index'])->name('pinjam')->m
 Route::get('/kembali', [PeminjamanController::class, 'bookReturnPage'])->name('kembali')->middleware('auth');
 Route::post('/kembali/{id}', [PeminjamanController::class, 'bookReturn'])->middleware('auth');
 Route::post('/pinjam', [PeminjamanController::class, 'store'])->middleware('auth');
+Route::get('/fetchDetail/{id}',[PeminjamanController::class, 'fetchBookReturnData'])->middleware('auth');
