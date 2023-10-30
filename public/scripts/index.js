@@ -1,6 +1,7 @@
 $(document).ready(function () {
     new DataTable('#anggota_data');
     new DataTable('#buku_data');
+    new DataTable('#peminjaman_data');
     $('.select2').select2({
     });
 });

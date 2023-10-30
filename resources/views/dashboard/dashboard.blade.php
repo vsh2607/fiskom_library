@@ -23,7 +23,7 @@
                             <a class="btn btn-danger mt-3 btn-block" style="padding: 20px" href="{{ route('pinjam') }}">PEMINJAMAN BUKU</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-danger mt-3 btn-block" style="padding: 20px" href="#">PENGEMBALIAN BUKU</a>
+                            <a class="btn btn-danger mt-3 btn-block" style="padding: 20px" href="{{ route('kembali') }}">PENGEMBALIAN BUKU</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-danger mt-3 btn-block" style="padding: 20px" href="{{ route('list-buku') }}">DATA BUKU</a>

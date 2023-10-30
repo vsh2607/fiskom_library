@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Peminjaman extends Model
+class DetailPeminjaman extends Model
 {
     use HasFactory;
+
     protected $guarded = ["id"];
-    public function detailPeminjamans(){
-        return $this->hasMany(DetailPeminjaman::class, "id_peminjaman", "id");
-    }
+
 }

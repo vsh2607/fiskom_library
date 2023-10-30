@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,7 +25,9 @@ class AuthContoller extends Controller
         ];
 
         if(Auth::attempt($loginData)){
+            $user = Auth::user();
             $request->session()->regenerate();
+            $token = $request->session()->token();
             return redirect()->intended('/dashboard');
 
         }else{
