@@ -42,4 +42,9 @@ function getDeletedId(anggotaId) {
     myForm.action = "/hapus-anggota/" + anggotaId;
 }
 
+function getReturnedId(peminjamanId){
+    myForm = document.getElementById('book-form-return');
+    myForm.action = "/kembali/" + peminjamanId;
+}
+
 

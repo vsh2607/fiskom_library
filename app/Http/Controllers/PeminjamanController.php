@@ -17,26 +17,30 @@ class PeminjamanController extends Controller
         $navbarType = "navbar_filled";
         $menu = "proses.peminjaman";
         $anggotas = Anggota::all();
-        $bukus = Buku::all();
+        $bukus = Buku::where('jumlah', '>', 0)->get();
         $dateNow = date('Y-m-d');
         return view ('dashboard.dashboard', ['pageName' => $pageName, 'navbarType' => $navbarType, 'menu'=>$menu, 'anggotas'=>$anggotas, 'dateNow'=>$dateNow, 'bukus'=>$bukus]);
 
 
     }
 
-    public function bookReturn(){
+    public function bookReturnPage(){
         $pageName = "FISKOM Library System - Pengembalian Buku";
         $navbarType = "navbar_filled";
-        $pinjamans = Peminjaman::with("detailPeminjamans")->get();
-        foreach($pinjamans as $pinjaman){
-            foreach($pinjaman->detailPeminjamans as $detailPeminjaman){
-                dd($detailPeminjaman);
-            }
-
-        }
+        $pinjamans = Peminjaman::with(["detailPeminjamans", "peminjam"])->where('status', 1)->get();
         $menu = "proses.pengembalian";
-        return view ('dashboard.dashboard', ['pageName' => $pageName, 'navbarType' => $navbarType, 'menu'=>$menu]);
+        return view ('dashboard.dashboard', ['pageName' => $pageName, 'navbarType' => $navbarType, 'menu'=>$menu, 'pinjamans' => $pinjamans]);
 
+    }
+
+    public function bookReturn(String $id){
+        $peminjaman = Peminjaman::with(['detailPeminjamans'])->where('id', $id)->first();
+        $peminjaman->update(["status"=>0]);
+        foreach($peminjaman->detailPeminjamans as $detail){
+            Buku::where('id', $detail->id_buku)->increment('jumlah', 1);
+        }
+
+        return redirect('/kembali');
     }
 
     public function create()
@@ -67,6 +71,7 @@ class PeminjamanController extends Controller
 
         $books = $request->id_buku;
         foreach($books as $book){
+            Buku::where('id', $book)->decrement('jumlah', 1);
             DetailPeminjaman::create([
                 'id_peminjaman' => $peminjamanData->id,
                 'id_buku' => $book

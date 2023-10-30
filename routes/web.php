@@ -44,5 +44,6 @@ Route::post('/upload-file', [BukuController::class, 'store'])->middleware('auth'
 
 //Proses Pinjam - Kembali
 Route::get('/pinjam', [PeminjamanController::class, 'index'])->name('pinjam')->middleware('auth');
-Route::get('/kembali', [PeminjamanController::class, 'bookReturn'])->name('kembali')->middleware('auth');
+Route::get('/kembali', [PeminjamanController::class, 'bookReturnPage'])->name('kembali')->middleware('auth');
+Route::post('/kembali/{id}', [PeminjamanController::class, 'bookReturn'])->middleware('auth');
 Route::post('/pinjam', [PeminjamanController::class, 'store'])->middleware('auth');
