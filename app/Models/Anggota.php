@@ -12,4 +12,6 @@ class Anggota extends Model
     use SoftDeletes;
 
     protected $fillable = ['id', 'nim', 'name', 'dob', 'prodi', 'no_wa', 'email', 'alamat', 'photo_path'];
+
+    
 }

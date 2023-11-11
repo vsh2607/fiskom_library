@@ -57,7 +57,7 @@
                     id="tgl_peminjaman" required>
 
                 <br>
-                <label for="tgl_kembali">Tanggal Peminjaman <sup class="text-danger">*</sup></label>
+                <label for="tgl_kembali">Tanggal Pengembalian <sup class="text-danger">*</sup></label>
                 <input type="date" class="form-control" name="tgl_kembali" id="tgl_kembali" required>
 
                 <br>
